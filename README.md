@@ -3,6 +3,6 @@ Simple app which polls the Ambient Weather API and displays data via ncurses. By
 
 You'll also notice that I'm not using any of the ambient-specific python packages; this is also by design. OpenAI only knows about the packages up to 2021, so the code it produced was out of date. 
 
-![Screenshot]("screenshot.png")
+![Screenshot]("[screenshot.png](https://github.com/jquinby/ambient_weather_curses/blob/main/screenshot.png)")
 
  
