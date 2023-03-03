@@ -5,7 +5,7 @@ All it does is poll the API periodically, parse the results, and display the dat
 
 I had originally wanted to use Ambient's realtime API but this was simpler, and I leaned heavily (read: _nearly completely_) on chat.openai.com to produce it. One interesting bit - I had originally requested the ability to press `q` to quit. The AI dutifully added a `getch` clause, but then the program never refreshed. Do you know why? It turns out that `getch` blocks while waiting for input. I spent entirely too much time  troubleshooting the API and other things before figuring this out and asking the AI repeatedly "why isn't this working as expected." 
 
-When I mentioned the `getch` behavior to the AI, it agreed! Yes, getch blocks and this is why the program wasn't refreshing as expected. Well...thanks I guess. It offered up a solution which also did not work,  so CTRL-C to quit.
+When I mentioned the `getch` behavior to the AI, it agreed! Yes, `getch` blocks and this is why the program wasn't refreshing as expected. Well...thanks I guess. It offered up a solution which also did not work,  so CTRL-C to quit.  In any event, the AI got me closer to complete than I would have gotten on my own.
 
 You'll also notice that I'm not using any of the ambient-specific python packages; this is also by design. OpenAI only knows about the packages up to 2021, so the code it produced was out of date. 
 
