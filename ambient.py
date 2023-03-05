@@ -13,7 +13,7 @@ def display_data(window, data, pressures):
     curses.init_pair(4, curses.COLOR_RED, curses.COLOR_BLACK)
 
     window.clear()
-    window.addstr(0,0, "Ambient Weather Station Data", curses.A_BOLD)
+    window.addstr(0,0, "Ambient Weather Station ", curses.A_BOLD)
     window.addstr(1, 0, "-" * curses.COLS)
     window.addstr(f"Outside Temperature | {data['lastData']['tempf']}° F\n")
     window.addstr(f"Outside Humidity    | {data['lastData']['humidity']} %\n")
@@ -35,10 +35,11 @@ def display_data(window, data, pressures):
             window.addstr("▷\n", curses.color_pair(3))
     else:
         window.addstr("\n")
-    window.addstr(f"Wind Direction      | {wind_direction(data['lastData']['winddir'])}\n")
-    window.addstr(f"Wind Speed          | {data['lastData']['windspeedmph']} mph\n")
-    window.addstr(f"10 Min. Avg. Wind   | {wind_direction(data['lastData']['winddir_avg10m'])}\n")
-    window.addstr(f"Max Daily Gust      | {data['lastData']['maxdailygust']} mph\n")
+    window.addstr(f"Wind Speed          | {data['lastData']['windspeedmph']} mph")
+    window.addstr(f", gust {data['lastData']['windgustmph']}")
+    window.addstr(f", max {data['lastData']['maxdailygust']}\n")
+    window.addstr(f"Wind Direction      | {wind_direction(data['lastData']['winddir'])}")
+    window.addstr(f", averaging {wind_direction(data['lastData']['winddir_avg10m'])}\n")
     window.addstr(f"Daily Rain          | {data['lastData']['dailyrainin']} in\n")
     window.addstr(f"Station Battery     |")
     if data['lastData']['battout'] == 1:
@@ -54,15 +55,15 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 def main(window):
-    # add your API and App keys below; retrieve them from your Ambient Weather dashboard.
-    api_key = ''
-    app_key = ''
+    api_key = 'f98244e5f44747e796521fc7287db95c7fa44bde35474b5298fca4c79a003025'
+    app_key = 'f05a140c16724912b981f1a5f668a44a327bf91c40624e33b1ebe3f31dddba8d'
     url = f'https://rt.ambientweather.net/v1/devices?apiKey={api_key}&applicationKey={app_key}&limit=1'
     pressures = []
 
     while True:
         response = requests.get(url)
         if requests.exceptions.RequestException:
+           data = [] #  Hopefully avoid KeyError if the request fails? idk
            pass  # ignore failed request, wait until next loop
         data = response.json()[0]
         pressures.append(data['lastData']['baromrelin'])
