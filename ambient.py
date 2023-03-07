@@ -55,8 +55,8 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 def main(window):
-    api_key = 'f98244e5f44747e796521fc7287db95c7fa44bde35474b5298fca4c79a003025'
-    app_key = 'f05a140c16724912b981f1a5f668a44a327bf91c40624e33b1ebe3f31dddba8d'
+    api_key = ''
+    app_key = ''
     url = f'https://rt.ambientweather.net/v1/devices?apiKey={api_key}&applicationKey={app_key}&limit=1'
     pressures = []
 
