@@ -13,7 +13,7 @@ def display_data(window, data, pressures):
 
     window.clear()
     window.addstr(0,0, "Ambient Weather Station ", curses.A_BOLD)
-    window.addstr(1, 0, "-" * curses.COLS)
+    window.addstr(1,0, "-" * curses.COLS)
     window.addstr(f"Outside Temperature | {data['lastData']['tempf']}° F\n")
     window.addstr(f"Outside Humidity    | {data['lastData']['humidity']} %\n")
     window.addstr(f"Feels Like          | {data['lastData']['feelsLike']}° F\n")
@@ -54,7 +54,6 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 def main(window):
-    # retrieve these keys from your Ambient Weather dashboard
     api_key = ''
     app_key = ''
     url = f'https://rt.ambientweather.net/v1/devices?apiKey={api_key}&applicationKey={app_key}&limit=1'
@@ -68,9 +67,8 @@ def main(window):
             pressures.append(data['lastData']['baromrelin'])
             display_data(window, data, pressures)
             time.sleep(30)
-        except (IndexError,KeyError,requests.exceptions.RequestException, requests.exceptions.HTTPError):
-            # catch random API and cloudflare errors
-            print("Last request failed; retrying shortly.\n")
+        except (IndexError,KeyError,requests.exceptions.RequestException,requests.exceptions.HTTPError):
+            print("\nLast request failed; retrying shortly.\n")
             time.sleep(10)
         continue
 
