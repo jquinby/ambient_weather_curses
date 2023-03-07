@@ -62,8 +62,9 @@ def main(window):
 
     while True:
         response = requests.get(url)
+        if response.status_code ==  401: # ignore the occasional cloudflare hiccup
+           pass
         if requests.exceptions.RequestException:
-           data = [] #  Hopefully avoid KeyError if the request fails? idk
            pass  # ignore failed request, wait until next loop
         data = response.json()[0]
         pressures.append(data['lastData']['baromrelin'])
