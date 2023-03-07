@@ -39,7 +39,7 @@ def display_data(window, data, pressures):
     window.addstr(f", gust {data['lastData']['windgustmph']}")
     window.addstr(f", max {data['lastData']['maxdailygust']}\n")
     window.addstr(f"Wind Direction      | {wind_direction(data['lastData']['winddir'])}")
-    window.addstr(f", averaging {wind_direction(data['lastData']['winddir_avg10m'])}\n")
+    window.addstr(f", average {wind_direction(data['lastData']['winddir_avg10m'])}\n")
     window.addstr(f"Daily Rain          | {data['lastData']['dailyrainin']} in\n")
     window.addstr(f"Station Battery     |")
     if data['lastData']['battout'] == 1:
@@ -61,14 +61,16 @@ def main(window):
     pressures = []
 
     while True:
-        response = requests.get(url)
-        if response.status_code ==  401: # ignore the occasional cloudflare hiccup
-           pass
-        if requests.exceptions.RequestException:
-           pass  # ignore failed request, wait until next loop
-        data = response.json()[0]
-        pressures.append(data['lastData']['baromrelin'])
-        display_data(window, data, pressures)
-        time.sleep(30)
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()[0]
+            pressures.append(data['lastData']['baromrelin'])
+            display_data(window, data, pressures)
+            time.sleep(30)
+        except (IndexError,KeyError,requests.exceptions.RequestException, requests.exceptions.HTTPError):
+            print("Last request failed; retrying shortly.\n")
+            time.sleep(10)
+        continue
 
 curses.wrapper(main)
