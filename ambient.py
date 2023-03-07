@@ -2,7 +2,6 @@ import requests
 import curses
 import time
 import math
-import logging
 
 def display_data(window, data, pressures):
 
