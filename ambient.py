@@ -54,6 +54,7 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 def main(window):
+    # add your respective keys below; you can get generate them in the AmbientWeather dashboard.    
     api_key = ''
     app_key = ''
     url = f'https://rt.ambientweather.net/v1/devices?apiKey={api_key}&applicationKey={app_key}&limit=1'
