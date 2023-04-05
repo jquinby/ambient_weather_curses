@@ -3,7 +3,7 @@ Simple app which polls the Ambient Weather API and displays data via ncurses. By
 
 Wind direction is converted from degrees to cardinal directions, and a rudimentary bit of logic is used to show whether or not the barometer is rising or falling since the last reading. I should probably save a few readings and check the current against the average and will probably add that soon.
 
-I had originally wanted to use Ambient's realtime API but this was simpler, and I leaned heavily (read: _nearly completely_) on chat.openai.com to produce it. 
+I had originally wanted to use Ambient's realtime API but this was simpler, and I leaned heavily (read: _nearly completely_) on ChatGPT3 to produce it. 
 
 One interesting bit - I had originally requested the ability to press `q` to quit. The AI dutifully added a `getch` clause, but then the program never refreshed. Do you know why? It turns out that `getch` blocks while waiting for input. I spent entirely too much time  troubleshooting the API and other things before figuring this out and asking the AI repeatedly "why isn't this working as expected." 
 
