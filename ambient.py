@@ -20,8 +20,8 @@ def display_data(window, data, pressures):
     window.addstr(f"Dew Point           | {data['lastData']['dewPoint']}° F\n")
     window.addstr(f"UV Index            | {data['lastData']['uv']}\n")
     window.addstr(f"Solar radiation     | {data['lastData']['solarradiation']} W/m²\n")
-    window.addstr(f"Inside Temperature  | {data['lastData']['tempinf']}° F\n")
-    window.addstr(f"Inside Humidity     | {data['lastData']['humidityin']} %\n")
+    window.addstr(f"Upstairs            | {data['lastData']['tempinf']}° / {data['lastData']['humidityin']} %\n")
+    window.addstr(f"Downstairs          | {data['lastData']['temp2f']}° / {data['lastData']['humidity2']} %\n")
     window.addstr(f"Barometer           | {data['lastData']['baromrelin']} inHg ")
     if len(pressures) >= 2:
         last_pressure = pressures[-2]
