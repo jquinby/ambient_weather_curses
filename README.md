@@ -14,7 +14,7 @@ You'll also notice that I'm not using any of the ambient-specific python package
 The data updates every 30 seconds and can handle minor cloudflare hiccups or API errors. The most recent version of this script includes some improvements to the barometric pressure display that were created and added by Claude AI. 
 
 * Ambient's API docs: https://ambientweather.docs.apiary.io/#
-* My pairs programming partner: https://chat.openai.com
+* My pairs programming partners: https://chat.openai.com and  https://claude.ai
 
 ![screenshot](screenshot.png)
 
