@@ -11,7 +11,7 @@ When I mentioned the `getch` behavior to the AI, it agreed! Yes, `getch` blocks 
 
 You'll also notice that I'm not using any of the ambient-specific python packages; this is also by design. OpenAI only knows about the packages up to 2021, and the packages have progressed considerably since then. 
 
-The data updates every 30 seconds and can handle minor cloudflare hiccups or API errors.
+The data updates every 30 seconds and can handle minor cloudflare hiccups or API errors. The most recent version of this script includes some improvements to the barometric pressure display that were created and added by Claude AI. 
 
 * Ambient's API docs: https://ambientweather.docs.apiary.io/#
 * My pairs programming partner: https://chat.openai.com
