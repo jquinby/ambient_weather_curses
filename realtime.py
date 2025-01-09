@@ -8,7 +8,6 @@ import socketio
 import asyncio
 import signal
 import sys
-import logging
 
 class PressureTrendAnalyzer:
     def __init__(self, window_hours=3, min_samples=6):
@@ -45,7 +44,7 @@ class WeatherStation:
     def __init__(self, api_key, app_key):
         self.api_key = api_key
         self.app_key = app_key
-        self.sio = socketio.AsyncClient(logger=True)
+        self.sio = socketio.AsyncClient()
         self.current_data = None
         self.window = None
         self.running = True
@@ -189,8 +188,8 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 async def main(window):
-    api_key = ''
-    app_key = ''
+    api_key = '8f7f6e575e0a49d7bd072bc9b2b48e12eef6dbe3196147d096f0129ff7a6f664'
+    app_key = '43374a6a473c45179a57526b238340d87bfbe13324db486baf262829d471b871'
 
     station = WeatherStation(api_key, app_key)
     
