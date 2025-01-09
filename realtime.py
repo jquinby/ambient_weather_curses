@@ -188,8 +188,8 @@ def wind_direction(degrees):
     return directions[index % 16]
 
 async def main(window):
-    api_key = '8f7f6e575e0a49d7bd072bc9b2b48e12eef6dbe3196147d096f0129ff7a6f664'
-    app_key = '43374a6a473c45179a57526b238340d87bfbe13324db486baf262829d471b871'
+    api_key = ''
+    app_key = ''
 
     station = WeatherStation(api_key, app_key)
     
